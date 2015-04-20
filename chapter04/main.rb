@@ -4,6 +4,14 @@ require 'sass'
 
 require './song'
 
+configure :development do
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+end
+
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
 configure do
   enable :sessions
   set :username, 'frank'
@@ -60,4 +68,16 @@ end
 get '/login' do
   session.clear
   redirect to('/login')
+end
+
+helpers do
+  def css(*stylesheets)
+    stylesheets.map do |stylesheet|
+      "<link href=\"/#{stylesheet}.css\" media=\"screen, projection\" rel=\"stylesheet\" />"
+    end.join
+  end
+  
+  def current?(path='/')
+    (request.path==path || request.path==path+'/' ? "current" : nil)
+  end
 end

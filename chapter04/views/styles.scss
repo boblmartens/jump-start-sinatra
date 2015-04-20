@@ -47,6 +47,10 @@ header h1 {
 nav {
   @include tabs ($background: $black, $color: $white);
   font-weight: bold;
+  
+  a.current {
+    background: lighten($black, 5%);
+  }
 }
 
 p {
