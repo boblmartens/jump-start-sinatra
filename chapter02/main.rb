@@ -9,5 +9,9 @@ get '/about' do
 end
 
 get '/contact' do 
-  erb :contact, :layout => :special
+  erb :contact
+end
+
+not_found do
+  erb :not_found
 end
