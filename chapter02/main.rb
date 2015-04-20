@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'slim'
+require 'sass'
+
+get('/styles.css'){scss :styles}
 
 get '/' do
   @title = "There's No Place Like Home"
