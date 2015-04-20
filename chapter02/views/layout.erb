@@ -1,11 +1,3 @@
-require 'sinatra'
-
-get '/' do
-  erb :home
-end
-
-__END__
-@@home
 <% title="Songs by Sinatra" %>
 <!doctype>
 <html lang="en">
@@ -27,7 +19,7 @@ __END__
     </nav>
   </header>
   <section>
-    <p>Welcome to this website all about the songs of the great Frank Sinatra</p>
+    <%= yield %>
   </section>
 </body>
 
